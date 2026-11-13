@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-restapi
+  labels:
+    app: hello-world-restapi
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: hello-world-restapi
+
+  template:
+    metadata:
+      labels:
+        app: hello-world-restapi
+        
+
+    spec:
+      containers:
+      - name: hello-world-rest-api
+        image: in28min/hello-world-rest-api:0.0.3.RELEASE
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
